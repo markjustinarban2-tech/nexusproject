@@ -4,19 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Products - J2 Nexus Technologies</title>
-
   <style>
     /* ===== Global Reset ===== */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
+      font-family: 'Segoe UI', Arial, sans-serif;
     }
 
     body {
-      background: linear-gradient(135deg, #e0f7fa, #caf0f8);
-      color: #333;
+      background: #f4f4f4;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
@@ -24,14 +22,13 @@
 
     /* ===== Header ===== */
     header {
-      background: linear-gradient(135deg, #0077b6, #00b4d8);
+      background-color: #003366;
       color: #fff;
       width: 100%;
       position: fixed;
       top: 0;
       left: 0;
       z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
     }
 
     .container {
@@ -54,8 +51,7 @@
     }
 
     .logo img {
-      height: 45px;
-      border-radius: 8px;
+      height: 40px;
     }
 
     nav ul {
@@ -65,131 +61,142 @@
     }
 
     nav ul li a {
-      color: white;
+      color: #fff;
       text-decoration: none;
       font-weight: 500;
-      transition: 0.3s;
     }
 
-    nav ul li a:hover,
-    nav ul li a.active {
-      color: #caf0f8;
-      border-bottom: 2px solid #caf0f8;
-      padding-bottom: 3px;
+    nav ul li a.active,
+    nav ul li a:hover {
+      border-bottom: 2px solid #fff;
+    }
+
+    .login {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     .login a {
       color: #fff;
       text-decoration: none;
-      background: #03045e;
-      padding: 8px 16px;
-      border-radius: 20px;
-      transition: 0.3s;
+      font-weight: 500;
     }
 
-    .login a:hover {
-      background: #023e8a;
+    /* ===== Products Section ===== */
+    main {
+      padding: 120px 20px 40px;
+      flex: 1;
     }
 
-    /* ===== Product Section ===== */
-    .product-section {
-      padding: 120px 5% 60px;
-    }
-
-    .product-section h1 {
+    .products {
       text-align: center;
-      color: #0077b6;
-      font-size: 2.2em;
-      font-weight: 600;
+    }
+
+    .products h2 {
+      font-size: 2rem;
+      color: #003366;
       margin-bottom: 40px;
     }
 
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 35px;
-      justify-content: center;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      justify-items: center;
     }
 
     .product-card {
       background: #fff;
       border-radius: 15px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       overflow: hidden;
-      transition: all 0.3s ease;
-      text-align: center;
+      transition: 0.3s;
+      width: 100%;
+      max-width: 280px;
     }
 
     .product-card:hover {
-      transform: translateY(-7px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
     }
 
     .product-card img {
       width: 100%;
-      height: 220px;
+      height: 200px;
       object-fit: cover;
-      border-bottom: 3px solid #00b4d8;
     }
 
-    .info {
-      padding: 20px;
+    .product-info {
+      padding: 15px;
     }
 
-    .info h3 {
+    .product-info h3 {
+      font-size: 1.2rem;
+      color: #003366;
       margin-bottom: 10px;
-      color: #03045e;
-      font-size: 1.2em;
     }
 
-    .info p {
+    .product-info p {
+      font-size: 0.9rem;
       color: #555;
-      font-size: 0.95em;
-      line-height: 1.5;
       margin-bottom: 15px;
     }
 
-    .info button {
-      background: #0077b6;
-      color: white;
+    .product-info .btn {
+      background: #0055a5;
+      color: #fff;
+      padding: 10px 15px;
       border: none;
-      padding: 10px 20px;
-      border-radius: 25px;
+      border-radius: 20px;
       cursor: pointer;
-      font-weight: 500;
-      transition: 0.3s;
     }
 
-    .info button:hover {
-      background: #023e8a;
-      transform: scale(1.05);
+    .product-info .btn:hover {
+      background: #003366;
     }
 
     /* ===== Footer ===== */
     footer {
-      background: #03045e;
+      background-color: #003366;
       color: #fff;
       text-align: center;
-      padding: 20px 0;
+      padding: 15px 0;
+      font-size: 14px;
       margin-top: auto;
+    }
+
+    /* ===== Search ===== */
+    #searchContainer input {
+      padding: 5px 10px;
+      border-radius: 20px;
+      border: none;
       font-size: 14px;
     }
 
-    @media (max-width: 600px) {
-      .product-card img {
-        height: 180px;
-      }
+    #searchContainer button {
+      padding: 5px 10px;
+      border: none;
+      border-radius: 20px;
+      background: #0055a5;
+      color: #fff;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    @media (max-width:768px) {
+      nav ul { gap: 15px; }
     }
   </style>
 </head>
-
 <body>
+
   <!-- ===== Header ===== -->
   <header>
     <div class="container header-container">
       <div class="logo">
-        <img src="logo.jpg.png" alt="J2 Nexus Logo">
-        <span><strong>J2 Nexus Technologies</strong></span>
+        <img src="logo.jpg.png" alt="J2 Nexus Logo" />
+        <span>J2 Nexus Technologies</span>
       </div>
       <nav>
         <ul>
@@ -201,54 +208,69 @@
         </ul>
       </nav>
       <div class="login">
-        <a href="login.html">Logout</a>
+        <div id="searchIcon" style="cursor:pointer; font-size:1.3rem;">🔍</div>
+        <div id="searchContainer" style="display:none; align-items:center; gap:5px;">
+          <input type="text" id="searchInput" placeholder="Search products..." />
+          <button id="searchBtn">Search</button>
+        </div>
+
+        <div class="cart" onclick="window.location.href='cart.html'" 
+             style="position:relative; cursor:pointer; font-size:1.3rem;">
+          🛒
+          <div id="cartCount" style="position:absolute; top:-8px; right:-8px; background:red; color:#fff; width:18px; height:18px; border-radius:50%; display:flex; justify-content:center; align-items:center; font-size:12px;">0</div>
+        </div>
+
+        <a href="login.html">Sign In</a>
       </div>
     </div>
   </header>
 
-  <!-- ===== Products Section ===== -->
-  <section class="product-section">
-    <h1>Our Featured Products</h1>
-    <div class="product-grid">
-      <div class="product-card">
-        <img src="analog.jpg.jpg" alt="Analog Watch" />
-        <div class="info">
-          <h3>Analog Watch</h3>
-          <p>Elegant timepiece with classic moving hands and a durable design for everyday wear.</p>
-          <button class="add-to-cart" data-name="Analog Watch" data-price="1499" data-image="analog.jpg.jpg">Add to Cart</button>
+  <!-- ===== Products List ===== -->
+  <main>
+    <section class="products">
+      <h2>All Products</h2>
+      <div class="product-grid" id="productGrid">
+        <!-- Example products -->
+        <div class="product-card">
+          <img src="product1.jpg" alt="Wireless Headphones">
+          <div class="product-info">
+            <h3>Wireless Headphones</h3>
+            <p>Crystal-clear sound and long battery life.</p>
+            <button class="btn add-to-cart" data-name="Wireless Headphones">Add to Cart</button>
+          </div>
         </div>
-      </div>
 
-      <div class="product-card">
-        <img src="digital.jpg.jpg" alt="Digital Watch" />
-        <div class="info">
-          <h3>Digital Watch</h3>
-          <p>Modern watch featuring LED display, stopwatch, and date function — perfect for active lifestyles.</p>
-          <button class="add-to-cart" data-name="Digital Watch" data-price="1799" data-image="digital.jpg.jpg">Add to Cart</button>
+        <div class="product-card">
+          <img src="product2.jpg" alt="Smartwatch Pro">
+          <div class="product-info">
+            <h3>Smartwatch Pro</h3>
+            <p>Track fitness, health, and notifications with style.</p>
+            <button class="btn add-to-cart" data-name="Smartwatch Pro">Add to Cart</button>
+          </div>
         </div>
-      </div>
 
-      <div class="product-card">
-        <img src="automatic.jpg.jpg" alt="Automatic Watch" />
-        <div class="info">
-          <h3>Automatic Watch</h3>
-          <p>Premium self-winding mechanical watch combining tradition and innovation.</p>
-          <button class="add-to-cart" data-name="Automatic Watch" data-price="2999" data-image="automatic.jpg.jpg">Add to Cart</button>
+        <div class="product-card">
+          <img src="product3.jpg" alt="Bluetooth Speaker">
+          <div class="product-info">
+            <h3>Bluetooth Speaker</h3>
+            <p>Powerful sound for both indoor and outdoor fun.</p>
+            <button class="btn add-to-cart" data-name="Bluetooth Speaker">Add to Cart</button>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- ===== Footer ===== -->
   <footer>
     <p>© 2025 J2 Nexus Technologies. All rights reserved.</p>
   </footer>
 
-  <!-- ===== Firebase Scripts ===== -->
-  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"></script>
+  <!-- ===== Firebase & Scripts ===== -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-  <script>
     const firebaseConfig = {
   apiKey: "AIzaSyBT0DK0d30KyKe4RpMoelFlL1rpBKlrm-I",
   authDomain: "nexusproject-cdf0d.firebaseapp.com",
@@ -259,27 +281,37 @@
   measurementId: "G-Z1SZ61W8BF"
 };
 
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
 
-    document.querySelectorAll(".add-to-cart").forEach(button => {
-      button.addEventListener("click", async () => {
-        const name = button.dataset.name;
-        const price = parseFloat(button.dataset.price);
-        const image = button.dataset.image;
+    // Load cart count
+    async function loadCartCount() {
+      const snapshot = await getDocs(collection(db, "cart"));
+      document.getElementById("cartCount").textContent = snapshot.size;
+    }
+    loadCartCount();
 
-        try {
-          await db.collection("cart").add({
-            name,
-            price,
-            image,
-            createdAt: new Date()
-          });
-          alert(`${name} has been added to your cart!`);
-        } catch (error) {
-          console.error("Error adding to cart: ", error);
-        }
+    // Add to Cart
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const name = btn.dataset.name;
+        await addDoc(collection(db, "cart"), { name, timestamp: new Date() });
+        alert(`${name} added to cart!`);
+        loadCartCount();
       });
+    });
+
+    // Search toggle
+    const searchIcon = document.getElementById('searchIcon');
+    const searchContainer = document.getElementById('searchContainer');
+    searchIcon.addEventListener('click', () => {
+      searchContainer.style.display = searchContainer.style.display==='flex'?'none':'flex';
+      if(searchContainer.style.display==='flex') document.getElementById('searchInput').focus();
+    });
+
+    document.getElementById('searchBtn').addEventListener('click', () => {
+      const query = document.getElementById('searchInput').value.trim();
+      if(query) window.location.href=`product.html?search=${encodeURIComponent(query)}`;
     });
   </script>
 </body>
